@@ -53,7 +53,7 @@ func (w *Window) Input(message string) (string, error) {
 	}
 	fmt.Print(message)
 	var resp string
-	_, err := fmt.Scan(&resp)
+	_, err := fmt.Scanln(&resp)
 
 	fmt.Print("\x1b[A")
 	clearLine(len(message + resp))
