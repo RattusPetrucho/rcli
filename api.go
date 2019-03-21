@@ -56,6 +56,7 @@ func (w *Window) Input(message string) (string, error) {
 	fmt.Print(message)
 	reader := bufio.NewReader(os.Stdin)
 	resp, err := reader.ReadString('\n')
+	resp = strings.TrimSpace(resp)
 
 	fmt.Print("\x1b[A")
 	clearLine(len(message + resp))
