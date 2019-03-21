@@ -1,7 +1,9 @@
 package rcli
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -52,8 +54,8 @@ func (w *Window) Input(message string) (string, error) {
 		message = message + " "
 	}
 	fmt.Print(message)
-	var resp string
-	_, err := fmt.Scanln(&resp)
+	reader := bufio.NewReader(os.Stdin)
+	resp, err := reader.ReadString('\n')
 
 	fmt.Print("\x1b[A")
 	clearLine(len(message + resp))
